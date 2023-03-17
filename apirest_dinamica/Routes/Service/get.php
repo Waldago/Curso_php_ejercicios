@@ -24,23 +24,33 @@ $type = $_GET["type"] ?? null;
 $response=new GetController();
 
 
-if($rel == null && $type == null && $table != "relations" &&isset($_GET["linkTo"]) && isset($_GET["equalTo"])){
+if($rel == null && $type == null && $table != "relations" && isset($_GET["linkTo"]) && isset($_GET["equalTo"])){
     /*Peticion get con filtro*/
+    //echo "1";
     $response->getDataFilter($table, $select, $_GET["linkTo"], $_GET["equalTo"], $orderBy, $orderMode, $startAt, $endAt);
 }
 else if($rel != null && $type != null && $table == "relations" && !isset($_GET["linkTo"]) && !isset($_GET["equalTo"])){
     /*Peticion get sin filtro con join*/
+    //echo "2";
     $response->getRelData($rel, $type, $select, $orderBy, $orderMode, $startAt, $endAt);
 }
 else if($rel != null && $type != null && $table == "relations" && isset($_GET["linkTo"]) && isset($_GET["equalTo"])){
     /*Peticion get con filtro con join*/
+    //echo "3";
     $response->getRelDataFilter($rel, $type, $select, $_GET["linkTo"], $_GET["equalTo"],$orderBy, $orderMode, $startAt, $endAt);
 }
-else if(isset($_GET["search"]) && isset($_GET["linkTo"])){
+else if($rel == null && $type == null && $table != "relations" && isset($_GET["search"]) && isset($_GET["linkTo"])){
+    //echo "4";
     $response->getDataSearch($table, $select, $_GET["linkTo"], $_GET["search"], $orderBy, $orderMode, $startAt, $endAt);
+}
+else if($rel != null && $type != null && $table == "relations" && isset($_GET["linkTo"]) && isset($_GET["search"])){
+    /*Peticion get con filtro con join*/
+    //echo "5";
+    $response->getRelDataSearch($rel, $type, $select, $_GET["linkTo"], $_GET["search"],$orderBy, $orderMode, $startAt, $endAt);
 }
 else{
     /*Peticion get sin filtro*/
+    //echo "me fui";
     $response->getData($table, $select, $orderBy, $orderMode, $startAt, $endAt);
 }
 

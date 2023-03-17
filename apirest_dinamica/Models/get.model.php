@@ -166,7 +166,6 @@ class GetModel{
             
         }
         $stmt = Conection::connect()->prepare($sql);
-
                 //Aca enlazo el nombre de la columna con lo que quiero que contenga
         foreach($linkToArray as $key => $value){
             $stmt-> bindParam(":".$value, $equalToArray[$key], PDO::PARAM_STR);
@@ -180,25 +179,100 @@ class GetModel{
     }
 
     static public function getDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt){
-    /*Peticion get sin filtro pero ordenada*/
-    $sql= "SELECT $select FROM $table WHERE $linkTo LIKE '%$search%'";
+    /*Peticion get con busqueda*/
+    $linkToArray = explode(",", $linkTo);
+    $searchToArray = explode("_", $search);
+    $linkToTxt = "";
+
+    //Esto va a concatenar con un and los filtros que recibamos a partir de tener mas de 1
+    if(count($linkToArray)>1){
+        foreach($linkToArray as $key => $value){
+            if($key>0){
+                $linkToTxt .= "AND ".$value." = :".$value." ";
+            }
+        }
+    }
+
+    $sql= "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchToArray[0]%' $linkToTxt";
 
     if($orderBy != null && $orderMode != null){
         if($startAt == null && $endAt == null){
-            /*Peticion get sin filtro ordenada pero sin limite*/
+            /*Peticion get con busqueda ordenada pero sin limite*/
             $sql=$sql."ORDER BY $orderBy $orderMode";
         }else{
-            /*Peticion get sin filtro ordenada con limite*/
+            /*Peticion get con busqueda ordenada con limite*/
             $sql=$sql."ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
         }
         
     }else if($startAt != null && $endAt != null){
         $sql=$sql."LIMIT $startAt, $endAt";
     }
-
     $stmt = Conection::connect()->prepare($sql);
+    //Aca enlazo el nombre de la columna con lo que quiero que contenga
+    foreach($linkToArray as $key => $value){
+        if($key>0){
+            $stmt-> bindParam(":".$value, $searchToArray[$key], PDO::PARAM_STR);
+        }
+    }
     $stmt-> execute();
     return $stmt->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    static public function getRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt){
+        $relArray = explode(",", $rel);
+        $typeArray = explode(",", $type);
+        $innerJoinTxt= "";
+        $linkToArray = explode(",", $linkTo);
+        $searchToArray = explode("_", $search);
+        $linkToTxt = "";
+       
+        if(count($linkToArray)>1){
+            foreach($linkToArray as $key => $value){
+                if($key>0){
+                    $linkToTxt .= "AND ".$value." = :".$value." ";
+                }
+            }
+        }
+
+        if(count($relArray)>1){
+            foreach($relArray as $key => $value){
+                if($key>0){
+                    $innerJoinTxt .= "INNER JOIN ".$value." ON ".$relArray[$key-1].".".$typeArray[$key-1]." = ".$relArray[$key].".".$typeArray[$key];
+                }
+            }
+
+        //Esto va a concatenar con un and los filtros que recibamos a partir de tener mas de 1
+        
+        $sql="SELECT $select FROM $relArray[0] $innerJoinTxt WHERE $linkToArray[0] LIKE '%$searchToArray[0]%' $linkToTxt";
+            
+        /*Peticion get join con busqueda pero ordenada*/
+        if($orderBy != null and $orderMode != null){
+            if($startAt == null and $endAt == null){
+                /*Peticion get join con busqueda ordenada pero sin limite*/
+                $sql=$sql." ORDER BY $orderBy $orderMode";
+            }else{
+                /*Peticion get join con busqueda ordenada con limite*/
+                $sql=$sql." ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+            }
+            
+        } else if($startAt != null and $endAt != null){
+                /*Peticion get join con busqueda con limite*/
+                $sql=$sql." LIMIT $startAt, $endAt";
+        }
+        $stmt = Conection::connect()->prepare($sql);
+
+        //Aca enlazo el nombre de la columna con lo que quiero que contenga
+        foreach($linkToArray as $key => $value){
+            if($key>0){
+                $stmt-> bindParam(":".$value, $searchToArray[$key], PDO::PARAM_STR);
+            }
+        }
+        
+        $stmt-> execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+        }
+        else return null;
     }
 }
 
