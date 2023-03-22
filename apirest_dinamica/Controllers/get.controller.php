@@ -39,7 +39,13 @@ class GetController{
     static public function getRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt){
         $responce = GetModel::getRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt);
         $return = new GetController();
-        $return->fncResponse($responce);
+        $return ->fncResponse($responce);
+     }
+
+     static public function getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt){
+        $responce = GetModel::getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt);
+        $return = new GetController();
+        $return -> fncResponse($responce);
      }
 
     public function fncResponse($response){

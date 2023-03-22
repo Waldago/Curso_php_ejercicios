@@ -48,6 +48,10 @@ else if($rel != null && $type != null && $table == "relations" && isset($_GET["l
     //echo "5";
     $response->getRelDataSearch($rel, $type, $select, $_GET["linkTo"], $_GET["search"],$orderBy, $orderMode, $startAt, $endAt);
 }
+else if(isset($_GET["between1"]) && isset($_GET["between2"]) && isset($_GET["linkTo"])){
+    //PETICIONES GET CON SELECCION DE RANGOS
+    $response->getDataRange($table, $select, $_GET["linkTo"], $_GET["between1"], $_GET["between2"], $orderBy, $orderMode, $startAt, $endAt);
+}
 else{
     /*Peticion get sin filtro*/
     //echo "me fui";

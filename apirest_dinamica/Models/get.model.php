@@ -274,6 +274,33 @@ class GetModel{
         }
         else return null;
     }
+
+    static public function getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt){
+
+        $sql="SELECT $select FROM $table WHERE $linkTo BETWEEN '$between1' and '$between2'";
+
+        /*Peticion get join con busqueda pero ordenada*/
+        if($orderBy != null and $orderMode != null){
+            if($startAt == null and $endAt == null){
+                /*Peticion get join con busqueda ordenada pero sin limite*/
+                $sql=$sql." ORDER BY $orderBy $orderMode";
+            }else{
+                /*Peticion get join con busqueda ordenada con limite*/
+                $sql=$sql." ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+            }
+            
+        } else if($startAt != null and $endAt != null){
+                /*Peticion get join con busqueda con limite*/
+                $sql=$sql." LIMIT $startAt, $endAt";
+        }
+
+        $stmt = Conection::connect()->prepare($sql);
+                
+        $stmt-> execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+
+    }
 }
 
 ?>
