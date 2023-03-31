@@ -2,8 +2,17 @@
 require_once ("connection.php");
 
 class GetModel{
+    static private function validacion($table){
+        //VALIDACION SI LA TABLA EXISTE
+        if(empty(Conection::getColumnsData($table))){
+            return null;
+        }
+    }
     /*Peticion get sin filtro*/
     static public function getData($table, $select, $orderBy, $orderMode, $startAt, $endAt){
+        
+        GetModel::validacion($table);
+
         /*Peticion get sin filtro pero ordenada*/
         if($orderBy != null and $orderMode != null){
             if($startAt == null and $endAt == null){

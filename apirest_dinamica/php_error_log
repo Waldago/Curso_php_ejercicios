@@ -1223,3 +1223,64 @@ Stack trace:
 #5 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\index.php(17): RoutesController->index()
 #6 {main}
   thrown in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php on line 377
+[31-Mar-2023 16:30:38 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1109 Unknown table 'colums' in information_schema in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php:37
+Stack trace:
+#0 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php(37): PDO->query('SELECT COLUMNS_...')
+#1 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php(7): Conection::getColumnsData('courses')
+#2 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\get.controller.php(9): GetModel::getData('courses', '*', NULL, NULL, NULL, NULL)
+#3 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\Service\get.php(68): GetController::getData('courses', '*', NULL, NULL, NULL, NULL)
+#4 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\routes.php(27): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\routes.controller.php(9): include_once('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\index.php(17): RoutesController->index()
+#7 {main}
+  thrown in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 37
+[31-Mar-2023 16:32:32 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1109 Unknown table 'colums' in information_schema in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php:37
+Stack trace:
+#0 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php(37): PDO->query('SELECT COLUMNS_...')
+#1 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php(7): Conection::getColumnsData('coursis')
+#2 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\get.controller.php(9): GetModel::getData('coursis', '*', NULL, NULL, NULL, NULL)
+#3 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\Service\get.php(68): GetController::getData('coursis', '*', NULL, NULL, NULL, NULL)
+#4 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\routes.php(27): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\routes.controller.php(9): include_once('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\index.php(17): RoutesController->index()
+#7 {main}
+  thrown in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 37
+[31-Mar-2023 16:32:59 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'COLUMNS_NAME' in 'field list' in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php:37
+Stack trace:
+#0 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php(37): PDO->query('SELECT COLUMNS_...')
+#1 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php(7): Conection::getColumnsData('coursis')
+#2 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\get.controller.php(9): GetModel::getData('coursis', '*', NULL, NULL, NULL, NULL)
+#3 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\Service\get.php(68): GetController::getData('coursis', '*', NULL, NULL, NULL, NULL)
+#4 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\routes.php(27): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\routes.controller.php(9): include_once('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\index.php(17): RoutesController->index()
+#7 {main}
+  thrown in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 37
+[31-Mar-2023 16:40:21 Europe/Berlin] PHP Fatal error:  Uncaught Error: Non-static method GetModel::validacion() cannot be called statically in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php:13
+Stack trace:
+#0 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\get.controller.php(9): GetModel::getData('coursess', '*', NULL, NULL, NULL, NULL)
+#1 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\Service\get.php(68): GetController::getData('coursess', '*', NULL, NULL, NULL, NULL)
+#2 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\routes.php(27): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\routes.controller.php(9): include_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\index.php(17): RoutesController->index()
+#5 {main}
+  thrown in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php on line 13
+[31-Mar-2023 16:40:38 Europe/Berlin] PHP Fatal error:  Uncaught Error: Non-static method GetModel::validacion() cannot be called statically in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php:13
+Stack trace:
+#0 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\get.controller.php(9): GetModel::getData('coursess', '*', NULL, NULL, NULL, NULL)
+#1 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\Service\get.php(68): GetController::getData('coursess', '*', NULL, NULL, NULL, NULL)
+#2 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\routes.php(27): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\routes.controller.php(9): include_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\index.php(17): RoutesController->index()
+#5 {main}
+  thrown in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php on line 13
+[31-Mar-2023 16:46:09 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'base-1.coursess' doesn't exist in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php:38
+Stack trace:
+#0 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php(38): PDOStatement->execute()
+#1 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\get.controller.php(9): GetModel::getData('coursess', '*', NULL, NULL, NULL, NULL)
+#2 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\Service\get.php(68): GetController::getData('coursess', '*', NULL, NULL, NULL, NULL)
+#3 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\routes.php(27): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\routes.controller.php(9): include_once('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\index.php(17): RoutesController->index()
+#6 {main}
+  thrown in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php on line 38

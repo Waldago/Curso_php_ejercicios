@@ -29,6 +29,15 @@
 
             return $link;
         }
+
+        //Validar la existencia de una tabla en la base de datos
+        static public function getColumnsData($table){
+            $database = Conection::infoDataBase()["database"];
+            return Conection::connect()
+            ->query("SELECT COLUMN_NAME AS ITEM FROM information_schema.columns WHERE table_schema = '$database' AND table_name = '$table'")
+            ->fetchAll(PDO::FETCH_OBJ); 
+        }
+
     }
 
     

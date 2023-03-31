@@ -7,6 +7,8 @@ class GetController{
     static public function getData($table, $select, $orderBy, $orderMode, $startAt, $endAt){
         /*Peticion get sin filtro*/
         $response= GetModel::getData($table, $select, $orderBy, $orderMode, $startAt, $endAt);
+        print_r($response);
+        return;
         $return = new GetController();
         $return->fncResponse($response);
     }
