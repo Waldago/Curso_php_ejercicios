@@ -2,9 +2,9 @@
 require("Controllers/get.controller.php");
 //La funcion explode(): Devuelve un array de string, siendo cada uno un substring del parámetro string 
 //formado por la división realizada por los delimitadores indicados en el parámetro string separator.
-$table= explode("?", $routesArray[1])[0];
+$table = explode("?", $routesArray[1])[0];
 //?? funciona como un "sino hace tal cosa". En este caso si el atributo del select esta vacio, va a poner un *
-$select= $_GET["select"] ?? "*";
+$select = $_GET["select"] ?? "*";
 
 $orderBy = $_GET["orderBy"] ?? null;
 
@@ -17,6 +17,10 @@ $endAt = $_GET["endAt"] ?? null;
 $rel = $_GET["rel"] ?? null;
 
 $type = $_GET["type"] ?? null;
+
+$inTo = $_GET["inTo"] ?? null;
+
+$filterTo = $_GET["filterTo"] ?? null;
 
 //echo $select;
 /*Respuesta del controlador, me fijo que variables vienen y que metodo va a usar */
@@ -48,9 +52,15 @@ else if($rel != null && $type != null && $table == "relations" && isset($_GET["l
     //echo "5";
     $response->getRelDataSearch($rel, $type, $select, $_GET["linkTo"], $_GET["search"],$orderBy, $orderMode, $startAt, $endAt);
 }
-else if(isset($_GET["between1"]) && isset($_GET["between2"]) && isset($_GET["linkTo"])){
+else if(isset($_GET["between1"]) && isset($_GET["between2"]) && isset($_GET["linkTo"]) && $rel == null && $type == null){
     //PETICIONES GET CON SELECCION DE RANGOS
-    $response->getDataRange($table, $select, $_GET["linkTo"], $_GET["between1"], $_GET["between2"], $orderBy, $orderMode, $startAt, $endAt);
+    //echo "entre mal";
+    $response->getDataRange($table, $select, $_GET["linkTo"], $_GET["between1"], $_GET["between2"], $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo);
+}
+else if(isset($_GET["between1"]) && isset($_GET["between2"]) && isset($_GET["linkTo"]) && $rel != null && $type != null && $table == "relations"){
+    //PETICIONES GET CON SELECCION DE RANGOS
+    //echo "entre bien";
+    $response->getRelDataRange($rel, $type, $select, $_GET["linkTo"], $_GET["between1"], $_GET["between2"], $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo);
 }
 else{
     /*Peticion get sin filtro*/

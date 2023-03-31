@@ -179,6 +179,7 @@ class GetModel{
     }
 
     static public function getDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt){
+
     /*Peticion get con busqueda*/
     $linkToArray = explode(",", $linkTo);
     $searchToArray = explode("_", $search);
@@ -275,30 +276,108 @@ class GetModel{
         else return null;
     }
 
-    static public function getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt){
+    static public function getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo){
 
         $sql="SELECT $select FROM $table WHERE $linkTo BETWEEN '$between1' and '$between2'";
 
-        /*Peticion get join con busqueda pero ordenada*/
-        if($orderBy != null and $orderMode != null){
-            if($startAt == null and $endAt == null){
-                /*Peticion get join con busqueda ordenada pero sin limite*/
-                $sql=$sql." ORDER BY $orderBy $orderMode";
-            }else{
-                /*Peticion get join con busqueda ordenada con limite*/
-                $sql=$sql." ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+        if($inTo != null && $filterTo != null){
+            $sql = $sql."AND $inTo IN ($filterTo)";
+            /*Peticion get join con busqueda pero ordenada*/
+            if($orderBy != null and $orderMode != null){
+                if($startAt == null and $endAt == null){
+                    /*Peticion get join con busqueda ordenada pero sin limite*/
+                    $sql=$sql." ORDER BY $orderBy $orderMode";
+                }else{
+                    /*Peticion get join con busqueda ordenada con limite*/
+                    $sql=$sql." ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+                }
+                
+            } else if($startAt != null and $endAt != null){
+                    /*Peticion get join con busqueda con limite*/
+                    $sql=$sql." LIMIT $startAt, $endAt";
             }
-            
-        } else if($startAt != null and $endAt != null){
-                /*Peticion get join con busqueda con limite*/
-                $sql=$sql." LIMIT $startAt, $endAt";
+        }else{
+            /*Peticion get join con busqueda pero ordenada*/
+            if($orderBy != null and $orderMode != null){
+                if($startAt == null and $endAt == null){
+                    /*Peticion get join con busqueda ordenada pero sin limite*/
+                    $sql=$sql." ORDER BY $orderBy $orderMode";
+                }else{
+                    /*Peticion get join con busqueda ordenada con limite*/
+                    $sql=$sql." ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+                }
+                
+            } else if($startAt != null and $endAt != null){
+                    /*Peticion get join con busqueda con limite*/
+                    $sql=$sql." LIMIT $startAt, $endAt";
+            }
         }
-
+        
         $stmt = Conection::connect()->prepare($sql);
                 
         $stmt-> execute();
         
         return $stmt->fetchAll(PDO::FETCH_CLASS);
+
+    }
+
+    static public function getRelDataRange($rel, $type, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo){
+        $relArray = explode(",", $rel);
+        $typeArray = explode(",", $type);
+        $innerJoinTxt= "";
+        $linkToTxt = "";
+        
+        
+
+        if(count($relArray)>1){
+            foreach($relArray as $key => $value){
+                if($key>0){
+                    $innerJoinTxt .= "INNER JOIN ".$value." ON ".$relArray[$key-1].".".$typeArray[$key-1]." = ".$relArray[$key].".".$typeArray[$key];
+                }
+            }
+        
+        $sql="SELECT $select FROM $relArray[0] $innerJoinTxt WHERE $linkTo BETWEEN '$between1' and '$between2'";
+
+        if($inTo != null && $filterTo != null){
+            $sql = $sql."AND $inTo IN ($filterTo)";
+            /*Peticion get join con busqueda pero ordenada*/
+            if($orderBy != null and $orderMode != null){
+                if($startAt == null and $endAt == null){
+                    /*Peticion get join con busqueda ordenada pero sin limite*/
+                    $sql=$sql." ORDER BY $orderBy $orderMode";
+                }else{
+                    /*Peticion get join con busqueda ordenada con limite*/
+                    $sql=$sql." ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+                }
+                
+            } else if($startAt != null and $endAt != null){
+                    /*Peticion get join con busqueda con limite*/
+                    $sql=$sql." LIMIT $startAt, $endAt";
+            }
+        }else{
+            /*Peticion get join con busqueda pero ordenada*/
+            if($orderBy != null and $orderMode != null){
+                if($startAt == null and $endAt == null){
+                    /*Peticion get join con busqueda ordenada pero sin limite*/
+                    $sql=$sql." ORDER BY $orderBy $orderMode";
+                }else{
+                    /*Peticion get join con busqueda ordenada con limite*/
+                    $sql=$sql." ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+                }
+                
+            } else if($startAt != null and $endAt != null){
+                    /*Peticion get join con busqueda con limite*/
+                    $sql=$sql." LIMIT $startAt, $endAt";
+            }
+        }
+        $stmt = Conection::connect()->prepare($sql);
+                
+        $stmt-> execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+
+        } else return null;
+
 
     }
 }

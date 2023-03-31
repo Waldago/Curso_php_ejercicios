@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-03-2023 a las 14:59:52
+-- Tiempo de generación: 31-03-2023 a las 14:45:56
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -43,7 +43,29 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `title`, `description`, `id_instructor`, `image`, `price`, `date_created`, `date_updated`) VALUES
-(1, 'iniciando php', 0, 0, 'asdasdas', 0, '2023-03-03', '2023-03-03 14:37:26');
+(1, 'iniciando php', 0, 3, 'asdasdas', 0, '2023-03-03', '2023-03-08 17:21:26'),
+(2, 'aprendiendo java', 0, 4, NULL, 0, '2023-03-08', '2023-03-08 17:25:48');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `instructors`
+--
+
+CREATE TABLE `instructors` (
+  `id` int(11) NOT NULL,
+  `name` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `instructors`
+--
+
+INSERT INTO `instructors` (`id`, `name`) VALUES
+(1, 'mario'),
+(2, 'maxi'),
+(3, 'martin'),
+(4, 'juan');
 
 --
 -- Índices para tablas volcadas
@@ -56,6 +78,12 @@ ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `instructors`
+--
+ALTER TABLE `instructors`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -63,7 +91,13 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT de la tabla `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `instructors`
+--
+ALTER TABLE `instructors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
