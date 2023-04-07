@@ -1284,3 +1284,79 @@ Stack trace:
 #5 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\index.php(17): RoutesController->index()
 #6 {main}
   thrown in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php on line 38
+[06-Apr-2023 23:54:43 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "public", expecting "::" in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php on line 38
+[06-Apr-2023 23:55:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "public", expecting "::" in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php on line 38
+[07-Apr-2023 02:47:29 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Conection::getColumnsData(), 1 passed in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php on line 8 and exactly 2 expected in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php:34
+Stack trace:
+#0 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\get.model.php(8): Conection::getColumnsData('courses')
+#1 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\get.controller.php(9): GetModel::getData('courses', '*', NULL, NULL, NULL, NULL)
+#2 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\Service\get.php(68): GetController::getData('courses', '*', NULL, NULL, NULL, NULL)
+#3 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Routes\routes.php(27): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Controllers\routes.controller.php(9): include_once('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\index.php(17): RoutesController->index()
+#6 {main}
+  thrown in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 34
+[07-Apr-2023 03:02:14 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:14 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:14 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:14 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:14 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:14 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:14 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:14 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:28 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:28 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:28 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:28 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:28 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:28 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:28 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:02:28 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:03:42 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:03:42 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:03:42 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:03:42 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:03:42 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:03:42 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:03:42 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:03:42 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 45
+[07-Apr-2023 03:05:24 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:24 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:24 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:24 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:24 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:24 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:24 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:24 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:25 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:25 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:25 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:25 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:25 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:25 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:25 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:05:25 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:09 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:09 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:09 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:09 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:09 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:09 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:09 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:09 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:15 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:15 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:15 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:15 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:15 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:15 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:15 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:07:15 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:09:24 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:09:24 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 47
+[07-Apr-2023 03:10:19 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:10:19 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 47
+[07-Apr-2023 03:10:19 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 48
+[07-Apr-2023 03:11:29 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 46
+[07-Apr-2023 03:11:29 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$item in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 47
+[07-Apr-2023 03:15:46 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "*" in C:\xampp\htdocs\Curso_php_ejercicios\apirest_dinamica\Models\connection.php on line 44

@@ -1,6 +1,6 @@
 <?php 
     //Armo un array con todo lo que este cerca de la "/"    
-    $routesArray=explode("/",$_SERVER['REQUEST_URI']);
+    $routesArray=explode("apirest_dinamica/",$_SERVER['REQUEST_URI']);
     //Limpio el array
     $routesArray=array_filter($routesArray);
     

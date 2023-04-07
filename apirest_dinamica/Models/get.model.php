@@ -2,17 +2,13 @@
 require_once ("connection.php");
 
 class GetModel{
-    static private function validacion($table){
-        //VALIDACION SI LA TABLA EXISTE
-        if(empty(Conection::getColumnsData($table))){
-            return null;
-        }
-    }
     /*Peticion get sin filtro*/
     static public function getData($table, $select, $orderBy, $orderMode, $startAt, $endAt){
-        
-        GetModel::validacion($table);
-
+        $selectArray=explode(",",$select);
+        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+        if(empty(Conection::getColumnsData($table,$selectArray))){
+            return null;
+        }
         /*Peticion get sin filtro pero ordenada*/
         if($orderBy != null and $orderMode != null){
             if($startAt == null and $endAt == null){
@@ -41,8 +37,18 @@ class GetModel{
     }
 
     static public function getDataFilter($table, $select, $linkTo, $equalTo, $orderBy, $orderMode, $startAt, $endAt){
-        /*Peticion get con filtro*/
+        $selectArray=explode(",",$select); 
         $linkToArray = explode(",", $linkTo);
+        foreach($linkToArray as $key=>$value){
+            array_push($selectArray,$value);
+        }
+        $selectArray=array_unique($selectArray);
+        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+         if(empty(Conection::getColumnsData($table,$selectArray))){
+            return null;
+        }
+        /*Peticion get con filtro*/
+        
         $equalToArray = explode("_", $equalTo);
         $linkToTxt = "";
 
@@ -91,7 +97,14 @@ class GetModel{
         $relArray = explode(",", $rel);
         $typeArray = explode(",", $type);
         $innerJoinTxt= "";
-       
+        $selectArray=explode(",",$select);
+        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+        foreach($relArray as $key=>$value){
+            if(empty(Conection::getColumnsData($value,$selectArray))){
+            return null;
+            }
+        }
+
         if(count($relArray)>1){
             foreach($relArray as $key => $value){
                 if($key>0){
@@ -135,7 +148,20 @@ class GetModel{
         $linkToArray = explode(",", $linkTo);
         $equalToArray = explode("_", $equalTo);
         $linkToTxt = "";
-       
+
+        foreach($linkToArray as $key=>$value){
+            array_push($selectArray,$value);
+        }
+
+        $selectArray=array_unique($selectArray);
+
+        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+        foreach($relArray as $key=>$value){
+            if(empty(Conection::getColumnsData($value,$selectArray))){
+            return null;
+        }
+        }
+
         if(count($linkToArray)>1){
             foreach($linkToArray as $key => $value){
                 if($key>0){
@@ -188,44 +214,54 @@ class GetModel{
     }
 
     static public function getDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt){
+        $selectArray=explode(",",$select);
+        /*Peticion get con busqueda*/
+        $linkToArray = explode(",", $linkTo);
+        $searchToArray = explode("_", $search);
+        $linkToTxt = "";
 
-    /*Peticion get con busqueda*/
-    $linkToArray = explode(",", $linkTo);
-    $searchToArray = explode("_", $search);
-    $linkToTxt = "";
+        foreach($linkToArray as $key=>$value){
+            array_push($selectArray,$value);
+        }
+        $selectArray=array_unique($selectArray);
+        
+        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+        if(empty(Conection::getColumnsData($table,$selectArray))){
+        return null;
+        }
 
-    //Esto va a concatenar con un and los filtros que recibamos a partir de tener mas de 1
-    if(count($linkToArray)>1){
-        foreach($linkToArray as $key => $value){
-            if($key>0){
-                $linkToTxt .= "AND ".$value." = :".$value." ";
+        //Esto va a concatenar con un and los filtros que recibamos a partir de tener mas de 1
+        if(count($linkToArray)>1){
+            foreach($linkToArray as $key => $value){
+                if($key>0){
+                    $linkToTxt .= "AND ".$value." = :".$value." ";
+                }
             }
         }
-    }
 
-    $sql= "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchToArray[0]%' $linkToTxt";
+        $sql= "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchToArray[0]%' $linkToTxt";
 
-    if($orderBy != null && $orderMode != null){
-        if($startAt == null && $endAt == null){
-            /*Peticion get con busqueda ordenada pero sin limite*/
-            $sql=$sql."ORDER BY $orderBy $orderMode";
-        }else{
-            /*Peticion get con busqueda ordenada con limite*/
-            $sql=$sql."ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+        if($orderBy != null && $orderMode != null){
+            if($startAt == null && $endAt == null){
+                /*Peticion get con busqueda ordenada pero sin limite*/
+                $sql=$sql."ORDER BY $orderBy $orderMode";
+            }else{
+                /*Peticion get con busqueda ordenada con limite*/
+                $sql=$sql."ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+            }
+
+        }else if($startAt != null && $endAt != null){
+            $sql=$sql."LIMIT $startAt, $endAt";
         }
-        
-    }else if($startAt != null && $endAt != null){
-        $sql=$sql."LIMIT $startAt, $endAt";
-    }
-    $stmt = Conection::connect()->prepare($sql);
-    //Aca enlazo el nombre de la columna con lo que quiero que contenga
-    foreach($linkToArray as $key => $value){
-        if($key>0){
-            $stmt-> bindParam(":".$value, $searchToArray[$key], PDO::PARAM_STR);
+        $stmt = Conection::connect()->prepare($sql);
+        //Aca enlazo el nombre de la columna con lo que quiero que contenga
+        foreach($linkToArray as $key => $value){
+            if($key>0){
+                $stmt-> bindParam(":".$value, $searchToArray[$key], PDO::PARAM_STR);
+            }
         }
-    }
-    $stmt-> execute();
-    return $stmt->fetchAll(PDO::FETCH_CLASS);
+        $stmt-> execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
     }
 
     static public function getRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt){
@@ -236,6 +272,18 @@ class GetModel{
         $searchToArray = explode("_", $search);
         $linkToTxt = "";
        
+        foreach($linkToArray as $key=>$value){
+            array_push($selectArray,$value);
+        }
+        $selectArray=array_unique($selectArray);
+
+        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+        foreach($relArray as $key=>$value){
+            if(empty(Conection::getColumnsData($value,$selectArray))){
+            return null;
+            }
+        }
+        
         if(count($linkToArray)>1){
             foreach($linkToArray as $key => $value){
                 if($key>0){
@@ -286,7 +334,15 @@ class GetModel{
     }
 
     static public function getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo){
-
+        $selectArray=explode(",",$select);
+        array_push($selectArray,$linkTo);
+                
+        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+        if(empty(Conection::getColumnsData($table,$selectArray))){
+        return null;
+        }
+        
+        
         $sql="SELECT $select FROM $table WHERE $linkTo BETWEEN '$between1' and '$between2'";
 
         if($inTo != null && $filterTo != null){
@@ -335,9 +391,16 @@ class GetModel{
         $typeArray = explode(",", $type);
         $innerJoinTxt= "";
         $linkToTxt = "";
+        $selectArray=explode(",",$select);
+        array_push($selectArray,$linkTo);
+        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+        foreach($relArray as $key=>$value){
+            //revisar que mando muchas veces el $selectArray
+            if(empty(Conection::getColumnsData($value,$selectArray))){
+            return null;
+            }
+        }
         
-        
-
         if(count($relArray)>1){
             foreach($relArray as $key => $value){
                 if($key>0){
