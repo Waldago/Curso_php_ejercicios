@@ -54,7 +54,20 @@
                     }
                     Esto se puede escribir asi: */
                     return $contador == count($colunms) ? $validate : null;
-                }else return $validate;
+                }else {
+                    $contador=0;
+                    foreach($validate as $key=>$value){
+                        $contador+=in_array($value->ITEM,$colunms);
+                    }
+                    /*
+                    if(count($colunms)==$contador){
+                        return $validate;
+                    }else{
+                        return null;
+                    }
+                    Esto se puede escribir asi: */
+                    return $contador == (count($colunms)-1) ? $validate : null;
+                }
                 
             }
         }

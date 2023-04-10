@@ -96,17 +96,14 @@ class GetModel{
     static public function getRelData($rel, $type, $select, $orderBy, $orderMode, $startAt, $endAt){
         $relArray = explode(",", $rel);
         $typeArray = explode(",", $type);
-        $innerJoinTxt= "";
-        $selectArray=explode(",",$select);
-        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
-        foreach($relArray as $key=>$value){
-            if(empty(Conection::getColumnsData($value,$selectArray))){
-            return null;
-            }
-        }
+        $innerJoinTxt= "";  
 
         if(count($relArray)>1){
             foreach($relArray as $key => $value){
+                //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+                if(empty(Conection::getColumnsData($value,["*"]))){
+                    return null;
+                    }
                 if($key>0){
                     $innerJoinTxt .= "INNER JOIN ".$value." ON ".$relArray[$key-1].".".$typeArray[$key-1]." = ".$relArray[$key].".".$typeArray[$key];
                 }
@@ -133,8 +130,12 @@ class GetModel{
             
         }
         $stmt = Conection::connect()->prepare($sql);
-        
-        $stmt-> execute();
+                 
+        TRY{
+            $stmt-> execute();
+        }catch(PDOException $E){
+            return null;
+        }
         
         return $stmt->fetchAll(PDO::FETCH_CLASS);
         }
@@ -148,20 +149,7 @@ class GetModel{
         $linkToArray = explode(",", $linkTo);
         $equalToArray = explode("_", $equalTo);
         $linkToTxt = "";
-
-        foreach($linkToArray as $key=>$value){
-            array_push($selectArray,$value);
-        }
-
-        $selectArray=array_unique($selectArray);
-
-        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
-        foreach($relArray as $key=>$value){
-            if(empty(Conection::getColumnsData($value,$selectArray))){
-            return null;
-        }
-        }
-
+        
         if(count($linkToArray)>1){
             foreach($linkToArray as $key => $value){
                 if($key>0){
@@ -172,6 +160,10 @@ class GetModel{
 
         if(count($relArray)>1){
             foreach($relArray as $key => $value){
+                //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+                if(empty(Conection::getColumnsData($value,["*"]))){
+                    return null;
+                }
                 if($key>0){
                     $innerJoinTxt .= "INNER JOIN ".$value." ON ".$relArray[$key-1].".".$typeArray[$key-1]." = ".$relArray[$key].".".$typeArray[$key];
                 }
@@ -205,8 +197,13 @@ class GetModel{
         foreach($linkToArray as $key => $value){
             $stmt-> bindParam(":".$value, $equalToArray[$key], PDO::PARAM_STR);
         }
+
+        TRY{
+            $stmt-> execute();
+        }catch(PDOException $E){
+            return null;
+        }
         
-        $stmt-> execute();
         
         return $stmt->fetchAll(PDO::FETCH_CLASS);
         }
@@ -271,19 +268,7 @@ class GetModel{
         $linkToArray = explode(",", $linkTo);
         $searchToArray = explode("_", $search);
         $linkToTxt = "";
-       
-        foreach($linkToArray as $key=>$value){
-            array_push($selectArray,$value);
-        }
-        $selectArray=array_unique($selectArray);
-
-        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
-        foreach($relArray as $key=>$value){
-            if(empty(Conection::getColumnsData($value,$selectArray))){
-            return null;
-            }
-        }
-        
+              
         if(count($linkToArray)>1){
             foreach($linkToArray as $key => $value){
                 if($key>0){
@@ -293,6 +278,10 @@ class GetModel{
         }
 
         if(count($relArray)>1){
+            //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+            if(empty(Conection::getColumnsData($value,["*"]))){
+                return null;
+                }
             foreach($relArray as $key => $value){
                 if($key>0){
                     $innerJoinTxt .= "INNER JOIN ".$value." ON ".$relArray[$key-1].".".$typeArray[$key-1]." = ".$relArray[$key].".".$typeArray[$key];
@@ -326,7 +315,11 @@ class GetModel{
             }
         }
         
-        $stmt-> execute();
+        TRY{
+            $stmt-> execute();
+        }catch(PDOException $E){
+            return null;
+        }
         
         return $stmt->fetchAll(PDO::FETCH_CLASS);
         }
@@ -390,28 +383,22 @@ class GetModel{
         $relArray = explode(",", $rel);
         $typeArray = explode(",", $type);
         $innerJoinTxt= "";
-        $linkToTxt = "";
-        $selectArray=explode(",",$select);
-        array_push($selectArray,$linkTo);
-        //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
-        foreach($relArray as $key=>$value){
-            //revisar que mando muchas veces el $selectArray
-            if(empty(Conection::getColumnsData($value,$selectArray))){
-            return null;
-            }
-        }
-        
+                
         if(count($relArray)>1){
             foreach($relArray as $key => $value){
+                //ESTO VERIFICA QUE LA TABLA QUE ESTAMOS TRAYENDO EXISTE
+                if(empty(Conection::getColumnsData($value,["*"]))){
+                    return null;
+                    }
                 if($key>0){
                     $innerJoinTxt .= "INNER JOIN ".$value." ON ".$relArray[$key-1].".".$typeArray[$key-1]." = ".$relArray[$key].".".$typeArray[$key];
                 }
             }
         
-        $sql="SELECT $select FROM $relArray[0] $innerJoinTxt WHERE $linkTo BETWEEN '$between1' and '$between2'";
+        $sql="SELECT $select FROM $relArray[0] $innerJoinTxt WHERE $relArray[0].$linkTo BETWEEN '$between1' and '$between2'";
 
         if($inTo != null && $filterTo != null){
-            $sql = $sql."AND $inTo IN ($filterTo)";
+            $sql = $sql."AND $inTo IN ($relArray[0].$filterTo)";
             /*Peticion get join con busqueda pero ordenada*/
             if($orderBy != null and $orderMode != null){
                 if($startAt == null and $endAt == null){
@@ -444,7 +431,11 @@ class GetModel{
         }
         $stmt = Conection::connect()->prepare($sql);
                 
-        $stmt-> execute();
+        TRY{
+            $stmt-> execute();
+        }catch(PDOException $E){
+            return null;
+        }
         
         return $stmt->fetchAll(PDO::FETCH_CLASS);
 

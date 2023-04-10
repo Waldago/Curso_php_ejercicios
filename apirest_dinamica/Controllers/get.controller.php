@@ -59,6 +59,7 @@ class GetController{
             $json = array (
                 'status'=>200,
                 'Total'=>count($response),
+                'Metodo'=>$_SERVER['REQUEST_METHOD'],
                 'result'=>$response
             );
             
