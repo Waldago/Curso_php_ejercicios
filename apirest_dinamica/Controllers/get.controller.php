@@ -19,39 +19,39 @@ class GetController{
     }
 
     static public function getRelData($rel, $type, $select, $orderBy, $orderMode, $startAt, $endAt){
-        $responce = GetModel::getRelData($rel, $type, $select, $orderBy, $orderMode, $startAt, $endAt);
+        $response = GetModel::getRelData($rel, $type, $select, $orderBy, $orderMode, $startAt, $endAt);
         $return = new GetController();
-        $return->fncResponse($responce);
+        $return->fncResponse($response);
     }
 
     static public function getRelDataFilter($rel, $type, $select, $linkTo, $equalTo, $orderBy, $orderMode, $startAt, $endAt){
-        $responce = GetModel::getRelDataFilter($rel, $type, $select, $linkTo, $equalTo, $orderBy, $orderMode, $startAt, $endAt);
+        $response = GetModel::getRelDataFilter($rel, $type, $select, $linkTo, $equalTo, $orderBy, $orderMode, $startAt, $endAt);
         $return = new GetController();
-        $return->fncResponse($responce);
+        $return->fncResponse($response);
      }
 
     static public function getDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt){
-        $responce = GetModel::getDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt);
+        $response = GetModel::getDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt);
         $return = new GetController();
-        $return->fncResponse($responce);
+        $return->fncResponse($response);
     }
 
     static public function getRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt){
-        $responce = GetModel::getRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt);
+        $response = GetModel::getRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt);
         $return = new GetController();
-        $return ->fncResponse($responce);
+        $return ->fncResponse($response);
      }
 
      static public function getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo){
-        $responce = GetModel::getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo);
+        $response = GetModel::getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo);
         $return = new GetController();
-        $return -> fncResponse($responce);
+        $return -> fncResponse($response);
      }
 
      static public function getRelDataRange($rel, $type, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo){
-        $responce = GetModel::getRelDataRange($rel, $type, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo);
+        $response = GetModel::getRelDataRange($rel, $type, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $endAt, $inTo, $filterTo);
         $return = new GetController();
-        $return -> fncResponse($responce);
+        $return -> fncResponse($response);
      }
 
     public function fncResponse($response){

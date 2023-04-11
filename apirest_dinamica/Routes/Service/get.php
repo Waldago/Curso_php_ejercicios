@@ -2,7 +2,7 @@
 require("Controllers/get.controller.php");
 //La funcion explode(): Devuelve un array de string, siendo cada uno un substring del parámetro string 
 //formado por la división realizada por los delimitadores indicados en el parámetro string separator.
-$table = explode("?", $routesArray[1])[0];
+
 //?? funciona como un "sino hace tal cosa". En este caso si el atributo del select esta vacio, va a poner un *
 $select = $_GET["select"] ?? "*";
 

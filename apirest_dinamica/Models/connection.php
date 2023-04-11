@@ -6,8 +6,8 @@
         static public function infoDataBase(){
             $infoDB = array(
                     "database"=>"base",
-                    "user"=>"root",
-                    "pass"=>""
+                    "user"=>"waldagorn",
+                    "pass"=>"170486"
             );
             return $infoDB;
         }
@@ -53,6 +53,7 @@
                         return null;
                     }
                     Esto se puede escribir asi: */
+                    //print_r($validate);
                     return $contador == count($colunms) ? $validate : null;
                 }else {
                     $contador=0;

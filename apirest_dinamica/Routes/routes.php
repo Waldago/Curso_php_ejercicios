@@ -1,6 +1,6 @@
 <?php 
     //Armo un array con todo lo que este cerca de la "/"    
-    $routesArray=explode("apirest_dinamica/",$_SERVER['REQUEST_URI']);
+    $routesArray=explode("/",$_SERVER['REQUEST_URI']);
     //Limpio el array
     $routesArray=array_filter($routesArray);
     
@@ -20,7 +20,7 @@
     //Cuando se hace una peticion a la api
     
     if(!empty($routesArray) && isset($_SERVER['REQUEST_METHOD'] )){
-
+        $table = explode("?", $routesArray[1])[0];
         // echo '<pre>'; print_r($_SERVER['REQUEST_METHOD']); echo '</pre>';
 
         if($_SERVER['REQUEST_METHOD']=='GET'){
@@ -28,14 +28,15 @@
         }
 
         if($_SERVER['REQUEST_METHOD']=='POST'){
-            $json = array (
-                'status'=>200,
-                'result'=>'Solicitud POST'
-            );
+            // $json = array (
+            //     'status'=>200,
+            //     'result'=>'Solicitud POST'
+            // );
         
-            echo json_encode($json, http_response_code($json["status"]));
+            // echo json_encode($json, http_response_code($json["status"]));
         
-            return;
+            // return;
+            include("Service/post.php");
         }
 
         if($_SERVER['REQUEST_METHOD']=='PUT'){
