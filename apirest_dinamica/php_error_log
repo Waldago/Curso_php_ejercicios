@@ -63,3 +63,99 @@ Stack trace:
 #3 /proyectos/curso_php/apirest_dinamica/index.php(17): RoutesController->index()
 #4 {main}
   thrown in /proyectos/curso_php/apirest_dinamica/Routes/Service/post.php on line 9
+[12-Apr-2023 11:10:53 America/Sao_Paulo] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo for input failed: Temporary failure in name resolution in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 5
+[12-Apr-2023 11:10:53 America/Sao_Paulo] PHP Warning:  file_get_contents(http://input): Failed to open stream: php_network_getaddresses: getaddrinfo for input failed: Temporary failure in name resolution in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 5
+[12-Apr-2023 11:16:53 America/Sao_Paulo] PHP Warning:  include(Models/connecction.php): Failed to open stream: No such file or directory in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:16:53 America/Sao_Paulo] PHP Warning:  include(): Failed opening 'Models/connecction.php' for inclusion (include_path='.:/usr/share/php') in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:16:53 America/Sao_Paulo] PHP Warning:  Undefined array key 0 in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 44
+[12-Apr-2023 11:17:07 America/Sao_Paulo] PHP Warning:  include(Models/connecction.php): Failed to open stream: No such file or directory in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:17:07 America/Sao_Paulo] PHP Warning:  include(): Failed opening 'Models/connecction.php' for inclusion (include_path='.:/usr/share/php') in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:17:56 America/Sao_Paulo] PHP Warning:  require(Models/connecction.php): Failed to open stream: No such file or directory in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:17:56 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'Models/connecction.php' (include_path='.:/usr/share/php') in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php:2
+Stack trace:
+#0 /proyectos/curso_php/apirest_dinamica/Routes/routes.php(45): include()
+#1 /proyectos/curso_php/apirest_dinamica/Controllers/routes.controller.php(9): include_once('...')
+#2 /proyectos/curso_php/apirest_dinamica/index.php(17): RoutesController->index()
+#3 {main}
+  thrown in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:17:59 America/Sao_Paulo] PHP Warning:  require(Models/connecction.php): Failed to open stream: No such file or directory in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:17:59 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'Models/connecction.php' (include_path='.:/usr/share/php') in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php:2
+Stack trace:
+#0 /proyectos/curso_php/apirest_dinamica/Routes/routes.php(45): include()
+#1 /proyectos/curso_php/apirest_dinamica/Controllers/routes.controller.php(9): include_once('...')
+#2 /proyectos/curso_php/apirest_dinamica/index.php(17): RoutesController->index()
+#3 {main}
+  thrown in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:22:25 America/Sao_Paulo] PHP Warning:  require_once(Models/connecction.php): Failed to open stream: No such file or directory in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:22:25 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'Models/connecction.php' (include_path='.:/usr/share/php') in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php:2
+Stack trace:
+#0 /proyectos/curso_php/apirest_dinamica/Routes/routes.php(45): include()
+#1 /proyectos/curso_php/apirest_dinamica/Controllers/routes.controller.php(9): include_once('...')
+#2 /proyectos/curso_php/apirest_dinamica/index.php(17): RoutesController->index()
+#3 {main}
+  thrown in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:23:57 America/Sao_Paulo] PHP Warning:  require_once(./Models/connecction.php): Failed to open stream: No such file or directory in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 11:23:57 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required './Models/connecction.php' (include_path='.:/usr/share/php') in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php:2
+Stack trace:
+#0 /proyectos/curso_php/apirest_dinamica/Routes/routes.php(45): include()
+#1 /proyectos/curso_php/apirest_dinamica/Controllers/routes.controller.php(9): include_once('...')
+#2 /proyectos/curso_php/apirest_dinamica/index.php(17): RoutesController->index()
+#3 {main}
+  thrown in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 13:57:20 America/Sao_Paulo] PHP Warning:  require_once(./Models/connecction.php): Failed to open stream: No such file or directory in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 13:57:20 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required './Models/connecction.php' (include_path='.:/usr/share/php') in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php:2
+Stack trace:
+#0 /proyectos/curso_php/apirest_dinamica/Routes/routes.php(45): include()
+#1 /proyectos/curso_php/apirest_dinamica/Controllers/routes.controller.php(9): include_once('...')
+#2 /proyectos/curso_php/apirest_dinamica/index.php(17): RoutesController->index()
+#3 {main}
+  thrown in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 13:57:36 America/Sao_Paulo] PHP Warning:  require_once(Models/connecction.php): Failed to open stream: No such file or directory in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 13:57:36 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'Models/connecction.php' (include_path='.:/usr/share/php') in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php:2
+Stack trace:
+#0 /proyectos/curso_php/apirest_dinamica/Routes/routes.php(45): include()
+#1 /proyectos/curso_php/apirest_dinamica/Controllers/routes.controller.php(9): include_once('...')
+#2 /proyectos/curso_php/apirest_dinamica/index.php(17): RoutesController->index()
+#3 {main}
+  thrown in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 2
+[12-Apr-2023 15:05:39 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[12-Apr-2023 15:08:50 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[12-Apr-2023 15:10:16 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[12-Apr-2023 15:13:29 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[12-Apr-2023 15:14:57 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[12-Apr-2023 15:15:14 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[12-Apr-2023 15:24:39 America/Sao_Paulo] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function PutModel::putData(), 2 passed in /proyectos/curso_php/apirest_dinamica/Controllers/put.controller.php on line 7 and exactly 4 expected in /proyectos/curso_php/apirest_dinamica/Models/put.model.php:6
+Stack trace:
+#0 /proyectos/curso_php/apirest_dinamica/Controllers/put.controller.php(7): PutModel::putData()
+#1 /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php(24): PutController::putData()
+#2 /proyectos/curso_php/apirest_dinamica/Routes/routes.php(45): include('...')
+#3 /proyectos/curso_php/apirest_dinamica/Controllers/routes.controller.php(9): include_once('...')
+#4 /proyectos/curso_php/apirest_dinamica/index.php(17): RoutesController->index()
+#5 {main}
+  thrown in /proyectos/curso_php/apirest_dinamica/Models/put.model.php on line 6
+[13-Apr-2023 14:47:56 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[13-Apr-2023 14:48:28 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[13-Apr-2023 14:48:43 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[13-Apr-2023 14:50:56 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[13-Apr-2023 14:51:10 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[13-Apr-2023 14:51:30 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class "PutController" not found in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php:5
+Stack trace:
+#0 /proyectos/curso_php/apirest_dinamica/Routes/routes.php(45): include()
+#1 /proyectos/curso_php/apirest_dinamica/Controllers/routes.controller.php(9): include_once('...')
+#2 /proyectos/curso_php/apirest_dinamica/index.php(17): RoutesController->index()
+#3 {main}
+  thrown in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 5
+[13-Apr-2023 14:53:22 America/Sao_Paulo] PHP Warning:  Undefined variable $nameid in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 18
+[13-Apr-2023 14:54:02 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[13-Apr-2023 14:54:24 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[13-Apr-2023 14:55:44 America/Sao_Paulo] PHP Fatal error:  Cannot declare class Conection, because the name is already in use in /proyectos/curso_php/apirest_dinamica/Models/connection.php on line 3
+[13-Apr-2023 14:57:08 America/Sao_Paulo] PHP Warning:  Undefined variable $nameid in /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php on line 18
+[13-Apr-2023 14:58:57 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class "GetController" not found in /proyectos/curso_php/apirest_dinamica/Models/put.model.php:9
+Stack trace:
+#0 /proyectos/curso_php/apirest_dinamica/Controllers/put.controller.php(7): PutModel::putData()
+#1 /proyectos/curso_php/apirest_dinamica/Routes/Service/put.php(34): PutController::putData()
+#2 /proyectos/curso_php/apirest_dinamica/Routes/routes.php(45): include('...')
+#3 /proyectos/curso_php/apirest_dinamica/Controllers/routes.controller.php(9): include_once('...')
+#4 /proyectos/curso_php/apirest_dinamica/index.php(17): RoutesController->index()
+#5 {main}
+  thrown in /proyectos/curso_php/apirest_dinamica/Models/put.model.php on line 9
